@@ -1,12 +1,17 @@
 
-import java.time.LocalDate;
+import java.util.Optional;
 
 
 
 public class Main {
     public static void main(String[] args) {
-        Customer a = new Customer("thinh", "lamgiathinh05@gmail.com", "+0346519304", LocalDate.now());
-        CustomerService valid = new CustomerService();
-        System.out.println(valid.isValid(a));
+        Object a = Optional.ofNullable(null)
+            .orElseGet(() -> "default value");
+        System.out.println(a);
+
+        Object b = Optional.ofNullable("Hello").orElseThrow(() -> new IllegalStateException("exception"));
+        System.out.println(b);
+
+        Optional.ofNullable("Thinh").ifPresent( (email) -> System.out.println("Sending email to " + email));
     }
 }
